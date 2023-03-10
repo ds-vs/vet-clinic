@@ -1,15 +1,28 @@
-﻿using VetClinic.Domain.Enum;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using VetClinic.Domain.Enum;
 
 namespace VetClinic.Domain.Entity
 {
     public class VetPassportEntity
     {
-        public Guid Id { get; set; }
-        public string? FullNameOwner { get; set; }
-        public string? Nickname { get; set; }
-        public string? Telephone { get; set; }
-        public string? AnumalView { get; set;}
-        public string? Breed { get; set; }
-        public Gender Gender { get; set; }
+        [Key]
+        public long VetPassportId { get; set; }
+
+        public string PetName { get; set; }
+        public string Breed { get; set; }
+        public string SpecialSigns { get; set; }
+        public DateOnly Birthday { get; set; }
+
+        public long MicrochipNumber { get; set; }
+        public DateOnly MicrochipDate { get; set; }
+        public string LocationOfMicrochip { get; set; }
+
+        public GenderVariantId GenderVariantId { get; set; }
+        public GenderVariant GenderVariant { get; set; }
+
+        [ForeignKey(nameof(PetOwnerEntity))]
+        public long OwnerId { get; set; }
+        public PetOwnerEntity? PetOwner { get; set; }
     }
 }
