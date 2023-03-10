@@ -5,11 +5,11 @@ namespace VetClinic.DAL
 {
     public class VetClinicDbContext : DbContext
     {
-        DbSet<VetPassportEntity>
+        public DbSet<VetPassportEntity> VetPassports { get; set; }
 
         public VetClinicDbContext(DbContextOptions<VetClinicDbContext> options) : base(options)
         {
-            Database.EnsureCreated();
+
         }
     }
 }
