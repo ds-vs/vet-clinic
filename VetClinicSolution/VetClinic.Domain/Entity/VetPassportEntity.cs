@@ -21,8 +21,6 @@ namespace VetClinic.Domain.Entity
         public GenderVariantId GenderVariantId { get; set; }
         public GenderVariant GenderVariant { get; set; }
 
-        [ForeignKey(nameof(PetOwnerEntity))]
-        public long OwnerId { get; set; }
         public PetOwnerEntity? PetOwner { get; set; }
     }
 }

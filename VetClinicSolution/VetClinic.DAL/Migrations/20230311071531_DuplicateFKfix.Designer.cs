@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VetClinic.DAL;
@@ -11,9 +12,11 @@ using VetClinic.DAL;
 namespace VetClinic.DAL.Migrations
 {
     [DbContext(typeof(VetClinicDbContext))]
-    partial class VetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230311071531_DuplicateFKfix")]
+    partial class DuplicateFKfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,12 +128,12 @@ namespace VetClinic.DAL.Migrations
                     b.Property<long>("MicrochipNumber")
                         .HasColumnType("bigint");
 
+                    b.Property<long>("OwnerId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("PetName")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<long?>("PetOwnerId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("SpecialSigns")
                         .IsRequired()
@@ -139,8 +142,6 @@ namespace VetClinic.DAL.Migrations
                     b.HasKey("VetPassportId");
 
                     b.HasIndex("GenderVariantId");
-
-                    b.HasIndex("PetOwnerId");
 
                     b.ToTable("VetPassports");
                 });
@@ -153,13 +154,7 @@ namespace VetClinic.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VetClinic.Domain.Entity.PetOwnerEntity", "PetOwner")
-                        .WithMany()
-                        .HasForeignKey("PetOwnerId");
-
                     b.Navigation("GenderVariant");
-
-                    b.Navigation("PetOwner");
                 });
 #pragma warning restore 612, 618
         }
