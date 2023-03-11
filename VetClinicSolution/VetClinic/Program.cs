@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
+using VetClinic.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
