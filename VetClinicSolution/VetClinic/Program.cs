@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
 using VetClinic.DAL.Repositories;
+using VetClinic.Service.Implementations;
+using VetClinic.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<VetClinicDbContext>(options =>
 {
     options.UseNpgsql(connectionString);
 });
+
+builder.Services.AddTransient<IVetPassportService, VetPassportService>();
 
 var app = builder.Build();
 
@@ -25,6 +29,5 @@ app.UseRouting();
 app.MapControllerRoute(
     name:"default", 
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
 app.Run();

@@ -1,0 +1,46 @@
+﻿@model VetClinic.Domain.Entity.VetPassportEntity
+
+<div class="container text-center">
+    <h2>Ветеринарный паспорт</h2>
+
+    <div class="row">
+
+        <div class="col">
+            <div class="card">
+              <div class="card-header">
+                Питомец
+              </div>
+              <ul class="list-group list-group-flush text-start">
+                <li class="list-group-item">Кличка: @Model.PetName</li>
+                <li class="list-group-item">Порода: -</li>
+                <li class="list-group-item">Окрас: @Model.Breed</li>
+                <li class="list-group-item">Дата рождения: @Model.Birthday</li>
+                <li class="list-group-item">Номер микрочипа: @Model.MicrochipNumber</li>
+                <li class="list-group-item">Дата чипирования: @Model.MicrochipDate</li>
+                <li class="list-group-item">Место чипирования: @Model.LocationOfMicrochip</li>
+                <li class="list-group-item">Пол: @Model.GenderVariantId.ToString()</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+              <div class="card-header">
+                Владелец
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ФИО: @Model.PetOwner?.FirstName @Model.PetOwner?.LastName</li>
+                <li class="list-group-item">Город: @Model.PetOwner?.City</li>
+                <li class="list-group-item">
+                    Адрес: @Model.PetOwner?.Street, 
+                    д. @Model.PetOwner?.House, 
+                    ст. @Model.PetOwner?.Building, 
+                    кв. @Model.PetOwner?.Flat
+                </li>
+                <li class="list-group-item">Телефон: @Model.PetOwner?.Phone</li>
+              </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

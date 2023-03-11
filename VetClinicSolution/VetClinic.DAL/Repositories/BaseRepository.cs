@@ -36,6 +36,13 @@ namespace VetClinic.DAL.Repositories
             return true;
         }
 
+        public async Task<TEntity> GetByIdAsync(long id)
+        {
+            var entity =  await _context.Set<TEntity>().FindAsync(id);
+
+            return entity!;
+        }
+
         public async Task<IEnumerable<TEntity>> SelectAsync()
         {
             return await _context.Set<TEntity>().ToListAsync();
