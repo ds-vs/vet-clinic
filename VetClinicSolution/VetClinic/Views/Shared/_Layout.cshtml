@@ -2,11 +2,39 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width"/>
-        <title>Единая ветеринарная клиника</title>
+        <title>Ветеринарная клиника</title>
+
+        <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </head>
     <body>
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <span class="fs-4">Ветеринарная клиника</span>
+              </a>
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Главная</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Get" asp-route-id="1" class="nav-link">Ветеринарный паспорт</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Select" asp-route-id="1" class="nav-link">Мои питомцы</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Create" class="nav-link">Создать вет.паспорт</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Index" class="nav-link">Таблица вет.паспортов</a></li>
+              </ul>
+            </header>
+        </div>
+
         <div>
             @RenderBody()
         </div>
+
+        <div class="container">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link px-2 text-muted">Главная</a></li>
+                </ul>
+                <p class="text-center text-muted">&copy; 2023 Ветеринарная клиника</p>
+            </footer>
+        </div>
+
+        <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
     </body>
 </html>

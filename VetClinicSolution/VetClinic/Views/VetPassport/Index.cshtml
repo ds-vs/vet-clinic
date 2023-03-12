@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VetPassportEntity>
+
+<div class="container">
+    <h2 class="text-center">Медицинские карты животных</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Номер</th>
+                <th scope="col">Кличка</th>
+                <th scope="col">Дата рождения</th>
+                <th scope="col">Номер чипа</th>
+                <th scope="col">Дата чипирования</th>
+                <th scope="col">Пол</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var entity in Model)
+            {
+                <tr>
+                    <td>@entity.VetPassportId</td>
+                    <td>@entity.PetName</td>
+                    <td>@entity.Birthday</td>
+                    <td>@entity.MicrochipNumber</td>
+                    <td>@entity.MicrochipDate</td>
+                    <td>@entity.GenderVariantId.ToString()</td>
+                    <td><a asp-action="Get" asp-route-id="@entity.VetPassportId">Раскрыть</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
