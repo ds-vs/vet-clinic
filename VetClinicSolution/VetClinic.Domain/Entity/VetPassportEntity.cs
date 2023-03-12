@@ -7,6 +7,7 @@ namespace VetClinic.Domain.Entity
     public class VetPassportEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long VetPassportId { get; set; }
 
         public string PetName { get; set; }
