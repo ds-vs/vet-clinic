@@ -6,5 +6,7 @@ namespace VetClinic.Service.Interfaces
     public interface IVetPassportService
     {
         public Task<VetPassportEntity> GetVetPassportAsync(long id);
+
+        public Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync();
     }
 }

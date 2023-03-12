@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
-using VetClinic.DAL.Repositories;
 using VetClinic.Domain.Entity;
 using VetClinic.Service.Interfaces;
 
@@ -28,6 +22,13 @@ namespace VetClinic.Service.Implementations
 
             if (entity == null)
                 throw new NullReferenceException("Ошибка: ветеринарная карта с таким номером не найдена.");
+
+            return entity;
+        }
+
+        public async Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync()
+        {
+            var entity = await _context.VetPassports.Include(e => e.PetOwner).ToListAsync();
 
             return entity;
         }

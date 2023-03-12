@@ -20,9 +20,16 @@ namespace VetClinic.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetVetPassportAsync(long id)
+        public async Task<ActionResult> GetVetPassportAsync(long id)
         {
             var entity = await _vetPassportService.GetVetPassportAsync(id);
+
+            return View(entity);
+        }
+
+        public async Task<ActionResult<IEnumerable<VetPassportEntity>>> SelectVetPassportsAsync()
+        {
+            var entity = await _vetPassportService.SelectVetPassportsAsync();
 
             return View(entity);
         }

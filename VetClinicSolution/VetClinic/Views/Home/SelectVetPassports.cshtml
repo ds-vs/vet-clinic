@@ -1,0 +1,31 @@
+﻿@model IEnumerable<VetClinic.Domain.Entity.VetPassportEntity>
+
+<div class="container text-center">
+    <h2>Мои питомцы</h2>
+
+    <div class="row row-cols-2">
+        @foreach(var entity in Model)
+        {
+            <div class="p-2 col">
+                <div class="card">
+                    <div class="card-header">
+                        @entity.PetName
+                    </div>
+                    <ul class="list-group list-group-flush text-start">
+                        <li class="list-group-item">Порода: -</li>
+                        <li class="list-group-item">Окрас: @entity.Breed</li>
+                        <li class="list-group-item">Дата рождения: @entity.Birthday</li>
+                        <li class="list-group-item">Номер микрочипа: @entity.MicrochipNumber</li>
+                        <li class="list-group-item">Дата чипирования: @entity.MicrochipDate</li>
+                        <li class="list-group-item">Место чипирования: @entity.LocationOfMicrochip</li>
+                        <li class="list-group-item">Пол: @entity.GenderVariantId.ToString()</li>
+                    </ul>
+                    <div class="card-body text-start">
+                        <a href="#" class="card-link">История посещений</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

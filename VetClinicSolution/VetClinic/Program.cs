@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
-using VetClinic.DAL.Repositories;
 using VetClinic.Service.Implementations;
 using VetClinic.Service.Interfaces;
 
