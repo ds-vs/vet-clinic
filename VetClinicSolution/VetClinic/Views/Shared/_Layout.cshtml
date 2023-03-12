@@ -13,9 +13,9 @@
                 <span class="fs-4">Ветеринарная клиника</span>
               </a>
               <ul class="nav nav-pills">
-                <li class="nav-item"><a asp-action="Index" class="nav-link">Главная</a></li>
-                <li class="nav-item"><a asp-controller="VetPassport" asp-action="GetVetPassport" asp-route-id="1" class="nav-link">Ветеринарный паспорт</a></li>
-                <li class="nav-item"><a asp-controller="VetPassport" asp-action="SelectVetPassports" asp-route-id="1" class="nav-link">Мои питомцы</a></li>
+                <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">Главная</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Get" asp-route-id="1" class="nav-link">Ветеринарный паспорт</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="Select" asp-route-id="1" class="nav-link">Мои питомцы</a></li>
               </ul>
             </header>
         </div>
@@ -27,9 +27,7 @@
         <div class="container">
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a asp-action="Index" class="nav-link px-2 text-muted">Главная</a></li>
-                    <li class="nav-item"><a asp-action="GetVetPassport" asp-route-id="1" class="nav-link px-2 text-muted">Ветеринарный паспорт</a></li>
-                <li class="nav-item"><a asp-action="SelectVetPassports" asp-route-id="1" class="nav-link px-2 text-muted">Мои питомцы</a></li>
+                    <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link px-2 text-muted">Главная</a></li>
                 </ul>
                 <p class="text-center text-muted">&copy; 2023 Ветеринарная клиника</p>
             </footer>
