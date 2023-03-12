@@ -1,6 +1,5 @@
 ﻿using VetClinic.Domain.Entity;
 using VetClinic.Domain.Entity.ViewModel;
-using VetClinic.Service.Implementations;
 
 namespace VetClinic.Service.Interfaces
 {
@@ -13,5 +12,11 @@ namespace VetClinic.Service.Interfaces
         public Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync(long ownerId);
 
         public Task<IEnumerable<VetPassportEntity>> GetAllAsync();
+
+        public Task<UpdateVetPassportViewModel> ViewAsync(long id);
+
+        public Task EditAsync(UpdateVetPassportViewModel viewModel);
+
+        public Task DeleteAsync(long id);
     }
 }

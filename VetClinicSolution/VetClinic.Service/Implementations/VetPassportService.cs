@@ -36,6 +36,30 @@ namespace VetClinic.Service.Implementations
             await _context.SaveChangesAsync();
         }
 
+        public async Task<UpdateVetPassportViewModel> ViewAsync(long id)
+        {
+            var entity = await _context.VetPassports.FirstOrDefaultAsync(e => e.VetPassportId == id);
+
+            if (entity == null)
+                throw new NullReferenceException("Ошибка: ветеринарная карта с таким номером не найдена.");
+
+            var viewModel = new UpdateVetPassportViewModel()
+            {
+                VetPassportId = entity.VetPassportId,
+                PetName = entity.PetName,
+                Breed = entity.Breed,
+                SpecialSigns = entity.SpecialSigns,
+                Birthday = entity.Birthday,
+                MicrochipNumber = entity.MicrochipNumber,
+                MicrochipDate = entity.MicrochipDate,
+                LocationOfMicrochip = entity.LocationOfMicrochip,
+                GenderVariantId = entity.GenderVariantId,
+                PetOwnerId = entity.PetOwnerId
+            };
+
+            return viewModel;
+        }
+
         public async Task<IEnumerable<VetPassportEntity>> GetAllAsync()
         {
             return await _context.VetPassports
@@ -62,6 +86,37 @@ namespace VetClinic.Service.Implementations
                 .ToListAsync();
 
             return entity;
+        }
+
+        public async Task EditAsync(UpdateVetPassportViewModel viewModel)
+        {
+            var entity = await _context.VetPassports.FindAsync(viewModel.VetPassportId);
+
+            if (entity == null)
+                throw new NullReferenceException("Ошибка: ветеринарная карта с таким номером не найдена.");
+
+            entity.PetName = viewModel.PetName;
+            entity.Breed = viewModel.Breed;
+            entity.SpecialSigns = viewModel.SpecialSigns;
+            entity.Birthday = viewModel.Birthday;
+            entity.MicrochipNumber = viewModel.MicrochipNumber;
+            entity.MicrochipDate = viewModel.MicrochipDate;
+            entity.LocationOfMicrochip = viewModel.LocationOfMicrochip;
+            entity.GenderVariantId = viewModel.GenderVariantId;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(long id)
+        {
+            var entity = await _context.VetPassports.FindAsync(id);
+
+            if (entity != null)
+            {
+                _context.VetPassports.Remove(entity);
+
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

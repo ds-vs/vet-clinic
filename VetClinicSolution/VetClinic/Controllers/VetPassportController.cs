@@ -45,11 +45,35 @@ namespace VetClinic.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> EditAsync(long id)
+        {
+            var entity = await _vetPassportService.ViewAsync(id);
+
+            return View(entity);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditAsync(UpdateVetPassportViewModel updateVetPassportRequest)
+        {
+            await _vetPassportService.EditAsync(updateVetPassportRequest);
+
+            return RedirectToAction("Get", new { id = updateVetPassportRequest.VetPassportId });
+        }
+
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<VetPassportEntity>>> SelectAsync(long id)
         {
             var entity = await _vetPassportService.SelectVetPassportsAsync(id);
 
             return View(entity);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(long id)
+        {
+            await _vetPassportService.DeleteAsync(id);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
