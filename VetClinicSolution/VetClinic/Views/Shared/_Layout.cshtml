@@ -14,8 +14,8 @@
               </a>
               <ul class="nav nav-pills">
                 <li class="nav-item"><a asp-action="Index" class="nav-link">Главная</a></li>
-                <li class="nav-item"><a asp-action="GetVetPassport" asp-route-id="1" class="nav-link">Ветеринарный паспорт</a></li>
-                <li class="nav-item"><a asp-action="SelectVetPassports" asp-route-id="1" class="nav-link">Мои питомцы</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="GetVetPassport" asp-route-id="1" class="nav-link">Ветеринарный паспорт</a></li>
+                <li class="nav-item"><a asp-controller="VetPassport" asp-action="SelectVetPassports" asp-route-id="1" class="nav-link">Мои питомцы</a></li>
               </ul>
             </header>
         </div>
