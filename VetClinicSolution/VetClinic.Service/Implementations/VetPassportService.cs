@@ -26,9 +26,11 @@ namespace VetClinic.Service.Implementations
             return entity;
         }
 
-        public async Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync()
+        public async Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync(long ownerId)
         {
-            var entity = await _context.VetPassports.Include(e => e.PetOwner).ToListAsync();
+            var entity = await _context.VetPassports
+                .Where(e => e.PetOwnerId == ownerId)
+                .ToListAsync();
 
             return entity;
         }
