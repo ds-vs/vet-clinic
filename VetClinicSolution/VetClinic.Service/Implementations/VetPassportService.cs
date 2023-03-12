@@ -36,6 +36,13 @@ namespace VetClinic.Service.Implementations
             await _context.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<VetPassportEntity>> GetAllAsync()
+        {
+            return await _context.VetPassports
+                .Include(e => e.PetOwner)
+                .ToListAsync();
+        }
+
         public async Task<VetPassportEntity> GetVetPassportAsync(long id)
         {
             var entity = await _context.VetPassports

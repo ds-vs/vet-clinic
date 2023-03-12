@@ -11,5 +11,7 @@ namespace VetClinic.Service.Interfaces
         public Task<VetPassportEntity> GetVetPassportAsync(long id);
 
         public Task<IEnumerable<VetPassportEntity>> SelectVetPassportsAsync(long ownerId);
+
+        public Task<IEnumerable<VetPassportEntity>> GetAllAsync();
     }
 }

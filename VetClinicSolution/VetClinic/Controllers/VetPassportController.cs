@@ -20,6 +20,14 @@ namespace VetClinic.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<VetPassportEntity>>> Index()
+        {
+            var entities = await _vetPassportService.GetAllAsync();
+
+            return View(entities);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateAsync(VetPassportViewModel addVetPassportRequest)
         {
