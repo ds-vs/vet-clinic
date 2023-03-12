@@ -1,0 +1,68 @@
+﻿@model VetClinic.Domain.Entity.ViewModel.VetPassportViewModel;
+
+<div class="container">
+
+    <h2 class="text-center">Новый ветеринарный паспорт</h2>
+
+    <form method="post" action="Create">
+        <div class="row">
+            <div class="col">
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Кличка</label>
+                    <input type="text" class="form-control" asp-for="PetName">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Окрас</label>
+                    <input type="text" class="form-control" asp-for="Breed">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Особые приметы</label>
+                    <textarea class="form-control" id="" rows="2" asp-for="SpecialSigns"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm" asp-for="GenderVariantId">
+                        <option selected>Пол</option>
+                        <option value="0">Д</option>
+                        <option value="1">М</option>
+                        <option value="2">Кастрат</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Дата рождения</label>
+                    <input type="date" class="form-control" asp-for="Birthday">
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="" class="form-label">Номер чипа</label>
+                    <input type="number" class="form-control" asp-for="MicrochipNumber">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Дата чипирования</label>
+                    <input type="date" class="form-control" asp-for="MicrochipDate">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Зона чипирования</label>
+                    <input type="text" class="form-control" asp-for="LocationOfMicrochip">
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Номер владельца</label>
+                    <input type="number" class="form-control" asp-for="PetOwnerId">
+                </div>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+
+</div>

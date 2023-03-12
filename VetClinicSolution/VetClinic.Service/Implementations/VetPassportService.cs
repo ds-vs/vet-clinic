@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
 using VetClinic.Domain.Entity;
+using VetClinic.Domain.Entity.ViewModel;
+using VetClinic.Domain.Enum;
 using VetClinic.Service.Interfaces;
 
 namespace VetClinic.Service.Implementations
@@ -12,6 +14,26 @@ namespace VetClinic.Service.Implementations
         public VetPassportService(VetClinicDbContext context) 
         {
             _context = context;
+        }
+
+        public async Task CreateVetPassportAsync(VetPassportViewModel viewModel)
+        {
+            var entity = new VetPassportEntity()
+            {
+                PetName = viewModel.PetName,
+                Breed = viewModel.Breed,
+                SpecialSigns = viewModel.SpecialSigns,
+                Birthday = viewModel.Birthday,
+                MicrochipNumber = viewModel.MicrochipNumber,
+                MicrochipDate = viewModel.MicrochipDate,
+                LocationOfMicrochip = viewModel.LocationOfMicrochip,
+                GenderVariantId = viewModel.GenderVariantId,
+                PetOwnerId = viewModel.PetOwnerId
+            };
+
+            await _context.VetPassports.AddAsync(entity);
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task<VetPassportEntity> GetVetPassportAsync(long id)

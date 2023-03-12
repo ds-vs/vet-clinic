@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VetClinic.Domain.Entity;
+using VetClinic.Domain.Entity.ViewModel;
 using VetClinic.Service.Interfaces;
 
 namespace VetClinic.Controllers
@@ -13,10 +14,21 @@ namespace VetClinic.Controllers
             _vetPassportService = vetPassportService;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync(VetPassportViewModel addVetPassportRequest)
+        {
+            await _vetPassportService.CreateVetPassportAsync(addVetPassportRequest);
+
+            return RedirectToAction(nameof(Create));
+        }
+
+        [HttpGet]
         public async Task<ActionResult> GetAsync(long id)
         {
             var entity = await _vetPassportService.GetVetPassportAsync(id);
@@ -24,6 +36,7 @@ namespace VetClinic.Controllers
             return View(entity);
         }
 
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<VetPassportEntity>>> SelectAsync(long id)
         {
             var entity = await _vetPassportService.SelectVetPassportsAsync(id);
