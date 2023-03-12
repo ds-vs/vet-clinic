@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VetClinic.Domain.Entity;
-using VetClinic.Domain.Entity.ViewModel;
+using VetClinic.Domain.ViewModel;
 using VetClinic.Service.Interfaces;
 
 namespace VetClinic.Controllers
@@ -29,7 +29,7 @@ namespace VetClinic.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(VetPassportViewModel addVetPassportRequest)
+        public async Task<IActionResult> CreateAsync(CreateVetPassportViewModel addVetPassportRequest)
         {
             await _vetPassportService.CreateVetPassportAsync(addVetPassportRequest);
 

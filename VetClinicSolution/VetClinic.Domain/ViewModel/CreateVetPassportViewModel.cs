@@ -1,8 +1,8 @@
 ﻿using VetClinic.Domain.Enum;
 
-namespace VetClinic.Domain.Entity.ViewModel
+namespace VetClinic.Domain.ViewModel
 {
-    public class VetPassportViewModel
+    public class CreateVetPassportViewModel
     {
         public string PetName { get; set; }
         public string Breed { get; set; }

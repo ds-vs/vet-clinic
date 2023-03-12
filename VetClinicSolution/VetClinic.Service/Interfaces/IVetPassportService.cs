@@ -1,11 +1,11 @@
 ﻿using VetClinic.Domain.Entity;
-using VetClinic.Domain.Entity.ViewModel;
+using VetClinic.Domain.ViewModel;
 
 namespace VetClinic.Service.Interfaces
 {
     public interface IVetPassportService
     {
-        public Task CreateVetPassportAsync(VetPassportViewModel entity);
+        public Task CreateVetPassportAsync(CreateVetPassportViewModel entity);
 
         public Task<VetPassportEntity> GetVetPassportAsync(long id);
 

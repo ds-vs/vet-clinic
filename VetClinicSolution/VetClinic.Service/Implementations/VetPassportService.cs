@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VetClinic.DAL;
 using VetClinic.Domain.Entity;
-using VetClinic.Domain.Entity.ViewModel;
 using VetClinic.Domain.Enum;
+using VetClinic.Domain.ViewModel;
 using VetClinic.Service.Interfaces;
 
 namespace VetClinic.Service.Implementations
@@ -16,7 +16,7 @@ namespace VetClinic.Service.Implementations
             _context = context;
         }
 
-        public async Task CreateVetPassportAsync(VetPassportViewModel viewModel)
+        public async Task CreateVetPassportAsync(CreateVetPassportViewModel viewModel)
         {
             var entity = new VetPassportEntity()
             {

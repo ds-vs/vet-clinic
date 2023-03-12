@@ -1,6 +1,6 @@
 ﻿using VetClinic.Domain.Enum;
 
-namespace VetClinic.Domain.Entity.ViewModel
+namespace VetClinic.Domain.ViewModel
 {
     public class UpdateVetPassportViewModel
     {
