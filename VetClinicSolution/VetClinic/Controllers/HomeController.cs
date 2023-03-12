@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VetClinic.DAL;
-using VetClinic.DAL.Repositories;
 using VetClinic.Domain.Entity;
 using VetClinic.Service.Interfaces;
 

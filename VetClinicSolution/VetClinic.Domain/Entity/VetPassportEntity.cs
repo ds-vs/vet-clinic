@@ -21,6 +21,7 @@ namespace VetClinic.Domain.Entity
         public GenderVariantId GenderVariantId { get; set; }
         public GenderVariant GenderVariant { get; set; }
 
+        public long PetOwnerId { get; set; }
         public PetOwnerEntity? PetOwner { get; set; }
     }
 }
